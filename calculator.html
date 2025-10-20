@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive metaphor calculator tools: analyze metaphors, generate new metaphors, identify literary devices, and test your knowledge with our metaphor quiz.">
+    <meta name="keywords" content="metaphor calculator, metaphor analyzer, metaphor generator, literary device identifier, metaphor quiz">
+    <meta name="author" content="Metaphor Definition">
+    <meta property="og:title" content="Metaphor Calculator Tools - Interactive Learning">
+    <meta property="og:description" content="Interactive metaphor tools including analyzer, generator, literary device identifier, and quiz.">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://metaphordefinition.com/calculator.html">
+    <title>Metaphor Calculator Tools | Metaphor Definition</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1 class="logo">📚 Metaphor Definition</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#definition">Definition</a></li>
+                <li><a href="/#types">Types</a></li>
+                <li><a href="calculator.html" class="active">Tools</a></li>
+                <li><a href="/#faq">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Metaphor Calculator Tools</h1>
+                <p class="lead">Master metaphors with our interactive learning tools. Analyze, create, and understand metaphors like never before.</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Tool Navigation -->
+        <nav class="tool-nav">
+            <a href="#analyzer" class="tool-link active">Analyzer</a>
+            <a href="#generator" class="tool-link">Generator</a>
+            <a href="#identifier" class="tool-link">Identifier</a>
+            <a href="#quiz" class="tool-link">Quiz</a>
+        </nav>
+
+        <!-- Metaphor Analyzer -->
+        <section id="analyzer" class="tool-section active">
+            <div class="tool-header">
+                <h2>Metaphor Analyzer</h2>
+                <p>Enter a metaphor and see its components broken down into Tenor, Vehicle, and Ground.</p>
+            </div>
+
+            <div class="tool-container">
+                <div class="input-group">
+                    <label for="metaphor-input">Enter Your Metaphor:</label>
+                    <textarea id="metaphor-input" placeholder="e.g., 'Time is money'" rows="3"></textarea>
+                    <button onclick="analyzeMetaphor()" class="btn btn-primary">Analyze</button>
+                </div>
+
+                <div id="analyzer-result" class="result-container" style="display: none;">
+                    <div class="result-item">
+                        <h3>Tenor (Subject)</h3>
+                        <p id="tenor-result"></p>
+                    </div>
+                    <div class="result-item">
+                        <h3>Vehicle (Comparison)</h3>
+                        <p id="vehicle-result"></p>
+                    </div>
+                    <div class="result-item">
+                        <h3>Ground (Connection)</h3>
+                        <p id="ground-result"></p>
+                    </div>
+                    <div class="result-item">
+                        <h3>Metaphor Type</h3>
+                        <p id="type-result"></p>
+                    </div>
+                    <div class="result-item">
+                        <h3>Analysis</h3>
+                        <p id="analysis-result"></p>
+                    </div>
+                </div>
+
+                <div class="examples-section">
+                    <h3>Try These Examples:</h3>
+                    <div class="example-buttons">
+                        <button onclick="loadExample('Time is money')" class="btn btn-secondary btn-small">Time is money</button>
+                        <button onclick="loadExample('Life is a journey')" class="btn btn-secondary btn-small">Life is a journey</button>
+                        <button onclick="loadExample('Love is a battlefield')" class="btn btn-secondary btn-small">Love is a battlefield</button>
+                        <button onclick="loadExample('The world is a stage')" class="btn btn-secondary btn-small">The world is a stage</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Metaphor Generator -->
+        <section id="generator" class="tool-section">
+            <div class="tool-header">
+                <h2>Metaphor Generator</h2>
+                <p>Create unique metaphors based on your subject matter. Great for writers, students, and creative professionals.</p>
+            </div>
+
+            <div class="tool-container">
+                <div class="input-group">
+                    <label for="subject-input">What do you want to describe?</label>
+                    <input type="text" id="subject-input" placeholder="e.g., fear, success, happiness" />
+                    <button onclick="generateMetaphor()" class="btn btn-primary">Generate Metaphors</button>
+                </div>
+
+                <div id="generator-result" class="result-container" style="display: none;">
+                    <h3>Generated Metaphors for: <span id="subject-display"></span></h3>
+                    <div id="metaphors-list" class="metaphors-list"></div>
+                </div>
+
+                <div class="generator-info">
+                    <h3>How It Works:</h3>
+                    <ol>
+                        <li>Enter the subject or concept you want to describe</li>
+                        <li>Our generator creates multiple metaphor options</li>
+                        <li>Each metaphor highlights different aspects of your subject</li>
+                        <li>Use these as inspiration for your writing</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Literary Device Identifier -->
+        <section id="identifier" class="tool-section">
+            <div class="tool-header">
+                <h2>Literary Device Identifier</h2>
+                <p>Paste text and identify metaphors, similes, personification, and other literary devices.</p>
+            </div>
+
+            <div class="tool-container">
+                <div class="input-group">
+                    <label for="text-input">Paste Your Text:</label>
+                    <textarea id="text-input" placeholder="Paste a passage or poem here..." rows="6"></textarea>
+                    <button onclick="identifyDevices()" class="btn btn-primary">Identify Devices</button>
+                </div>
+
+                <div id="identifier-result" class="result-container" style="display: none;">
+                    <div id="devices-found" class="devices-found"></div>
+                </div>
+
+                <div class="sample-texts">
+                    <h3>Sample Texts:</h3>
+                    <button onclick="loadSampleText('sample1')" class="btn btn-secondary btn-small">Shakespeare</button>
+                    <button onclick="loadSampleText('sample2')" class="btn btn-secondary btn-small">Dickinson</button>
+                    <button onclick="loadSampleText('sample3')" class="btn btn-secondary btn-small">Modern</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Metaphor Quiz -->
+        <section id="quiz" class="tool-section">
+            <div class="tool-header">
+                <h2>Metaphor Quiz</h2>
+                <p>Test your understanding of metaphor definitions, types, and usage.</p>
+            </div>
+
+            <div class="tool-container">
+                <div id="quiz-container"></div>
+                <div id="quiz-results" class="quiz-results" style="display: none;"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Embedding Section -->
+    <section class="embedding-section">
+        <div class="container">
+            <h2>Embed These Tools on Your Site</h2>
+            <p>All our tools are embeddable and can be added to your website. Natural backlinking opportunity for SEO!</p>
+
+            <div class="embed-options">
+                <div class="embed-card">
+                    <h3>Basic Embed</h3>
+                    <pre><code>&lt;iframe src="https://metaphordefinition.com/calculator.html#analyzer" width="100%" height="600"&gt;&lt;/iframe&gt;</code></pre>
+                    <button onclick="copyToClipboard(this.previousElementSibling.innerText)" class="btn btn-small">Copy</button>
+                </div>
+
+                <div class="embed-card">
+                    <h3>API Integration</h3>
+                    <pre><code>&lt;script src="https://metaphordefinition.com/embed.js"&gt;&lt;/script&gt;
+&lt;div data-metaphor-widget="analyzer"&gt;&lt;/div&gt;</code></pre>
+                    <button onclick="copyToClipboard(this.previousElementSibling.innerText)" class="btn btn-small">Copy</button>
+                </div>
+            </div>
+
+            <p><a href="/embedding-guide.html">Full Embedding Guide →</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Metaphor Definition provides comprehensive resources for understanding and using metaphors effectively.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="calculator.html">Calculator</a></li>
+                        <li><a href="/blog/">Blog</a></li>
+                        <li><a href="/resources/">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="/privacy/">Privacy</a></li>
+                        <li><a href="/terms/">Terms</a></li>
+                        <li><a href="/contact/">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Metaphor Definition. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="calculator.js"></script>
+</body>
+</html>

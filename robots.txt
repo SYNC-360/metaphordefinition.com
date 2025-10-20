@@ -1,0 +1,42 @@
+# robots.txt - Metaphor Definition
+# Last Updated: 2024-10-20
+# This file tells search engines which pages to crawl and index
+
+# Allow all search engines by default
+User-agent: *
+Allow: /
+
+# Disallow specific paths if needed
+Disallow: /admin/
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /cache/
+Disallow: /*.pdf$
+
+# Crawl delay and request rate (adjust based on server capacity)
+# Uncomment if you need to throttle crawling
+# Crawl-delay: 1
+
+# Specific rules for Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Specific rules for Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://metaphordefinition.com/sitemap.xml
+Sitemap: https://metaphordefinition.com/sitemap-news.xml

@@ -1,0 +1,168 @@
+# ============================================================
+# METAPHOR DEFINITION - Apache .htaccess Configuration
+# ============================================================
+# This file configures your Apache server for optimal SEO and performance
+# Deploy this to your web server root directory
+
+# ============================================================
+# ENABLE GZIP COMPRESSION
+# ============================================================
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/x-httpd-php
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ============================================================
+# BROWSER CACHING
+# ============================================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+
+    # Images
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+
+    # CSS and JavaScript
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType text/javascript "access plus 1 year"
+
+    # Fonts
+    ExpiresByType font/truetype "access plus 1 year"
+    ExpiresByType font/opentype "access plus 1 year"
+    ExpiresByType application/x-font-ttf "access plus 1 year"
+
+    # HTML files (check frequently)
+    ExpiresByType text/html "access plus 1 day"
+    ExpiresByType application/xhtml+xml "access plus 1 day"
+</IfModule>
+
+# ============================================================
+# FORCE HTTPS
+# ============================================================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ============================================================
+# REMOVE WWW FROM URL (Use www OR non-www, not both)
+# Option 1: Remove WWW
+# ============================================================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} !=on [OR]
+    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    RewriteCond %{HTTPS_HOST} ^www\.(.+)$ [NC]
+    RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+</IfModule>
+
+# ============================================================
+# Remove trailing slashes (except for directories)
+# ============================================================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.+)/$ /$1 [R=301,L]
+</IfModule>
+
+# ============================================================
+# PREVENT DIRECTORY LISTING
+# ============================================================
+Options -Indexes
+
+# ============================================================
+# SET DEFAULT FILES
+# ============================================================
+DirectoryIndex index.html index.php
+
+# ============================================================
+# SECURITY HEADERS
+# ============================================================
+<IfModule mod_headers.c>
+    # Prevent clickjacking
+    Header set X-Frame-Options "SAMEORIGIN"
+
+    # Enable XSS protection
+    Header set X-XSS-Protection "1; mode=block"
+
+    # Prevent MIME type sniffing
+    Header set X-Content-Type-Options "nosniff"
+
+    # Referrer policy
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Feature policy (Permissions policy)
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# ============================================================
+# CUSTOM ERROR PAGES
+# ============================================================
+ErrorDocument 404 /404.html
+ErrorDocument 500 /500.html
+
+# ============================================================
+# BLOCK ACCESS TO SENSITIVE FILES
+# ============================================================
+<FilesMatch "\.(env|json|md|lock|yml|yaml|sql|conf|config)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+</FilesMatch>
+
+# ============================================================
+# DENY ACCESS TO HIDDEN FILES
+# ============================================================
+<FilesMatch "^\.|^#.*#|~$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+</FilesMatch>
+
+# ============================================================
+# ALLOW SPECIFIC FILE ACCESS
+# ============================================================
+<Files ~ "\.(xml|txt|json)$">
+    <IfModule mod_authz_core.c>
+        Require all granted
+    </IfModule>
+</Files>
+
+# ============================================================
+# UTF-8 ENCODING
+# ============================================================
+AddDefaultCharset UTF-8
+<IfModule mod_headers.c>
+    Header set Content-Type "text/html; charset=UTF-8"
+</IfModule>
+
+# ============================================================
+# DISABLE SERVER SIGNATURE
+# ============================================================
+ServerSignature Off
+
+# ============================================================
+# ETAG CONFIGURATION (Improves Caching)
+# ============================================================
+<IfModule mod_headers.c>
+    Header unset ETag
+    FileETag None
+</IfModule>

@@ -1,0 +1,571 @@
+/* ============================================================
+   CALCULATOR PAGE STYLES
+   ============================================================ */
+
+.tool-nav {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+    border-bottom: 2px solid var(--border-color);
+    flex-wrap: wrap;
+}
+
+.tool-link {
+    padding: 1rem 1.5rem;
+    color: var(--text-light);
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-weight: 500;
+    margin-bottom: -2px;
+}
+
+.tool-link:hover,
+.tool-link.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.tool-section {
+    display: none;
+    margin: 3rem 0;
+    animation: fadeIn 0.3s ease;
+}
+
+.tool-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tool-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.tool-header h2 {
+    margin-top: 0;
+}
+
+.tool-container {
+    background-color: var(--bg-light);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* ============================================================
+   INPUT GROUPS
+   ============================================================ */
+
+.input-group {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.input-group label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.75rem;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    font-family: inherit;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.input-group button {
+    width: 100%;
+}
+
+/* ============================================================
+   RESULTS CONTAINER
+   ============================================================ */
+
+.result-container {
+    background-color: white;
+    border: 2px solid var(--primary-color);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1);
+}
+
+.result-item {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.result-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.result-item h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+.result-item p {
+    color: var(--text-dark);
+    font-weight: 500;
+    margin-bottom: 0;
+    line-height: 1.8;
+}
+
+/* ============================================================
+   EXAMPLES SECTION
+   ============================================================ */
+
+.examples-section {
+    background-color: white;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.examples-section h3 {
+    color: var(--text-dark);
+    margin-top: 0;
+}
+
+.example-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.example-buttons .btn {
+    width: 100%;
+}
+
+/* ============================================================
+   METAPHOR GENERATOR
+   ============================================================ */
+
+#generator-result h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.metaphors-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.metaphor-item {
+    background-color: white;
+    border-left: 4px solid var(--accent-color);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.metaphor-item strong {
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.metaphor-item p {
+    margin-bottom: 0;
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.generator-info {
+    background-color: white;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.generator-info h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+}
+
+.generator-info ol {
+    margin-left: 1.5rem;
+    color: var(--text-light);
+}
+
+.generator-info li {
+    margin-bottom: 0.75rem;
+}
+
+/* ============================================================
+   IDENTIFIER STYLES
+   ============================================================ */
+
+.devices-found {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.device-card {
+    background-color: white;
+    border: 2px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.device-card.metaphor {
+    border-left: 4px solid var(--primary-color);
+}
+
+.device-card.simile {
+    border-left: 4px solid var(--secondary-color);
+}
+
+.device-card.personification {
+    border-left: 4px solid var(--accent-color);
+}
+
+.device-card h4 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.device-card .device-name {
+    display: inline-block;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+}
+
+.device-card .highlighted-text {
+    background-color: #FEF3C7;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+}
+
+.device-card p {
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.sample-texts {
+    background-color: white;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.sample-texts h3 {
+    margin-top: 0;
+    color: var(--text-dark);
+}
+
+.sample-texts .btn {
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ============================================================
+   QUIZ STYLES
+   ============================================================ */
+
+.quiz-question {
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.quiz-question h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+.quiz-progress {
+    width: 100%;
+    height: 0.5rem;
+    background-color: var(--border-color);
+    border-radius: 0.25rem;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.quiz-progress-bar {
+    height: 100%;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.quiz-options {
+    display: grid;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.quiz-option {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.quiz-option:hover {
+    background-color: var(--bg-light);
+    border-color: var(--primary-color);
+}
+
+.quiz-option input[type="radio"] {
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+.quiz-option label {
+    margin: 0;
+    cursor: pointer;
+    flex: 1;
+}
+
+.quiz-option.selected {
+    background-color: #EEF2FF;
+    border-color: var(--primary-color);
+}
+
+.quiz-option.correct {
+    background-color: #ECFDF5;
+    border-color: var(--success-color);
+}
+
+.quiz-option.incorrect {
+    background-color: #FEF2F2;
+    border-color: var(--error-color);
+}
+
+.quiz-explanation {
+    background-color: #F0F9FF;
+    border-left: 4px solid var(--primary-color);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.quiz-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.quiz-results {
+    background-color: white;
+    border: 2px solid var(--primary-color);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    text-align: center;
+}
+
+.quiz-score {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.quiz-score span {
+    font-size: 1.5rem;
+}
+
+.quiz-feedback {
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+.quiz-results .btn {
+    margin: 0.5rem;
+}
+
+/* ============================================================
+   EMBEDDING SECTION
+   ============================================================ */
+
+.embedding-section {
+    background-color: var(--bg-light);
+    padding: 3rem 0;
+    margin-top: 4rem;
+}
+
+.embedding-section h2 {
+    text-align: center;
+}
+
+.embedding-section > .container > p {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+.embed-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.embed-card {
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.embed-card h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+}
+
+.embed-card pre {
+    background-color: var(--text-dark);
+    color: #E0E7FF;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+}
+
+.embed-card code {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.embed-card .btn {
+    width: 100%;
+}
+
+.embedding-section > .container > p:last-child {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .tool-nav {
+        gap: 0.5rem;
+    }
+
+    .tool-link {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .tool-container {
+        padding: 1.5rem;
+    }
+
+    .result-container {
+        padding: 1.5rem;
+    }
+
+    .example-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .metaphors-list {
+        grid-template-columns: 1fr;
+    }
+
+    .quiz-buttons {
+        flex-direction: column;
+    }
+
+    .quiz-buttons .btn {
+        width: 100%;
+    }
+
+    .embed-options {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .tool-nav {
+        gap: 0;
+    }
+
+    .tool-link {
+        flex: 1;
+        text-align: center;
+        padding: 0.5rem;
+        font-size: 0.8rem;
+        border-bottom-width: 2px;
+    }
+
+    .tool-container {
+        padding: 1rem;
+    }
+
+    .input-group {
+        padding: 1rem;
+    }
+
+    .result-container {
+        padding: 1rem;
+    }
+
+    .quiz-question {
+        padding: 1rem;
+    }
+
+    .embed-card {
+        padding: 1rem;
+    }
+
+    .embed-card pre {
+        font-size: 0.75rem;
+    }
+}
